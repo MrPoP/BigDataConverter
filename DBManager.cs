@@ -16,11 +16,11 @@ namespace BigDataConverter
     {
         private string DBFile = "MyDatabase.db";
         private string ConnectionString = "";
-        private SQLiteConnection m_dbConnection;
+        private SQLiteConnection? m_dbConnection;
         private bool CreatedNow = false;
         public DBManager()
         {
-            if(!File.Exist(Path.Combin(Environment.CurrentDirectory, DBFile)))
+            if(!File.Exists(Path.Combine(Environment.CurrentDirectory, DBFile)))
             {
                 SQLiteConnection.CreateFile(DBFile);
                 CreatedNow = true;
@@ -46,7 +46,7 @@ namespace BigDataConverter
                 try
                 {
                     m_dbConnection.Open();
-                    sql = $"Insert into FaceBook (one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve) values ({line})";
+                    string sql = $"Insert into FaceBook (one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve) values ({line})";
                     SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
                     command.ExecuteNonQuery();
                 }

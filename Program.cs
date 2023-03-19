@@ -3,10 +3,10 @@ using System.Data.SQLite;
 
 internal class Program
 {
-    static BigDataReader dataReader;
-    static AIDataReader aIDataReader;
-    static ResultAnalyzer resultAnalyzer;
-    static DBManager dBManager;
+    static BigDataReader? dataReader;
+    static AIDataReader? aIDataReader;
+    static ResultAnalyzer? resultAnalyzer;
+    static DBManager? dBManager;
     //static List<string> AnalyzedLines =new List<string>();
     private static void Main(string[] args)
     {
