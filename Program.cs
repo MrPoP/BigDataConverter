@@ -7,7 +7,7 @@ internal class Program
     static AIDataReader aIDataReader;
     static ResultAnalyzer resultAnalyzer;
     static DBManager dBManager;
-    static List<string> AnalyzedLines =new List<string>();
+    //static List<string> AnalyzedLines =new List<string>();
     private static void Main(string[] args)
     {
         Console.WriteLine("Loading file and preparing loader.");
