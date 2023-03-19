@@ -6,6 +6,7 @@ internal class Program
     static BigDataReader dataReader;
     static AIDataReader aIDataReader;
     static ResultAnalyzer resultAnalyzer;
+    static DBManager dBManager;
     static List<string> AnalyzedLines =new List<string>();
     private static void Main(string[] args)
     {
@@ -15,6 +16,7 @@ internal class Program
             string File = Environment.CurrentDirectory + "\\South Korea.txt";
             //dataReader = new BigDataReader(args[0]);
             aIDataReader = new AIDataReader(File);// (args[0]);
+            dBManager = new DBManager();
             resultAnalyzer = new ResultAnalyzer(':');
             aIDataReader.Start();
             while (aIDataReader.ProcessWorking)
@@ -25,11 +27,12 @@ internal class Program
                     Console.WriteLine(line);
                 }
                 string value = resultAnalyzer.Feed(line);
-                if (!string.IsNullOrEmpty(value) && !string.IsNullOrWhiteSpace(value))
-                    AnalyzedLines.Add(value);
+                dBManager.Insert(value);
+                /*if (!string.IsNullOrEmpty(value) && !string.IsNullOrWhiteSpace(value))
+                    AnalyzedLines.Add(value);*/
             }
-            if(AnalyzedLines.Count > 0)
-                CreateDB(AnalyzedLines);
+            /*if(AnalyzedLines.Count > 0)
+                CreateDB(AnalyzedLines);*/
             /*do
             {
                 Console.WriteLine(dataReader.GetLines().Current);
